@@ -1,32 +1,4 @@
-function receiveText (resultsArray) {
-	 console.log("received the array..");
-}
-
-/*
-chrome.browserAction.onClicked.addListener( function(tab) {
-	chrome.tabs.executeScript( tab.id, {
-		code: 'window.getSelection().toString();'
-	}, function(selection) {
-		console.log("Selected Text : " + selection[0]);
-		 $("#selected_text").text = selection[0];
-	});
-});
-*/
-
-/*
-chrome.browserAction.onClicked.addListener( function(tab) {
-
-	chrome.browserAction.setPopup ({
- 		popup: "popup.html"
- 	});
-
-	var selected_text = window.getSelection().toString();
-	chrome.runtime.sendMessage({action: "text-selection", text: selected_text})
-});
-*/
-
-
-//selected text
+//get selected text and pass it to background
 var selected_text = window.getSelection().toString();
 chrome.runtime.sendMessage({action: "text-selection", text: selected_text})
 

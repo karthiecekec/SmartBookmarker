@@ -18,8 +18,8 @@
  		"persistent": 	false
  	},
  	"browser_action" : {
- 		"default_title" : "Smark Bookmarker"
- 		//"default_popup": "index.html"
+ 		"default_title" : "Smark Bookmarker",
+ 		"default_popup": "index.html"
  	},
 
  	/*"content_scripts": [{
