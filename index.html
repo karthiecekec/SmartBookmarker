@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+
+         <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- Custom CSS -->
         <link rel="stylesheet" href="style.css">
 
         <!-- JQUERY -->
          <script src="/jquery.js"></script>
          
+         <!-- JS -->
+         <script src="/js/Event.js"></script>
+         <script src="/js/model/Bookmark.js"></script>
+         <script src="/js/model/BookmarkModel.js"></script>
+         <script src="/js/view/NewBookmarkView.js"></script>
+         <script src="/js/controller/NewBookmarkController.js"></script>
          <script src="/index.js"></script>
     </head>
 
@@ -15,28 +26,25 @@
 
             <!-- Page Content Holder -->
             <div id="content">
-
                 
                 <!-- CURRENT SELECTION -->
                 <div id="current_selection">
 
-                    <h1 id="current_selection_title">Smart Bookmarker</h1>
+                    <h2 id="current_selection_title">Smart Bookmarker</h2>
 
                     <div id="current_tab_url_div">
                         <p id="current_tab_url" class="truncate"></p>
                     </div>
 
                     <div id="current_selection_content">
-                        <textarea id="selected_text" readOnly></textarea>
+                        <textarea id="selected_text" class="form-control" readOnly></textarea>
                     </div>
                 </div>
 
                 <!-- Button -->
-                <div id="add_new_bookmark">
-                    <div>
-                        <input type="text" placeholder="Title" id="add_bookmark_title"/>
-                        <button id="add_bookmark_btn">Add</button>
-                    </div>
+                <div id="add_new_bookmark_div">
+                            <input type="text" placeholder="Title" id="add_bookmark_title" class="form-control"/>
+                            <button href="#" id="add_bookmark_btn" class="btn btn-info">Add</button>
                 </div>
 
             </div> 
