@@ -16,13 +16,26 @@
             <!-- Page Content Holder -->
             <div id="content">
 
-                <div id="all_links">
-                    <h2 id="current_tag_title"></h2>
+                
+                <!-- CURRENT SELECTION -->
+                <div id="current_selection">
 
-                    <div id="current_tag_content">
-                        <p id="selected_text"></p>
-                        <ul class="list-unstyled" id="current_tag_list">
-                         </ul>
+                    <h1 id="current_selection_title">Smart Bookmarker</h1>
+
+                    <div id="current_tab_url_div">
+                        <p id="current_tab_url" class="truncate"></p>
+                    </div>
+
+                    <div id="current_selection_content">
+                        <textarea id="selected_text" readOnly></textarea>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div id="add_new_bookmark">
+                    <div>
+                        <input type="text" placeholder="Title" id="add_bookmark_title"/>
+                        <button id="add_bookmark_btn">Add</button>
                     </div>
                 </div>
 

@@ -1,20 +1,46 @@
 'use strict';
 
+
+function getView() {
+	var views = chrome.extension.getViews({
+	 	type: "popup"
+	});
+
+	return views[0];
+}
+
+function selectText(containerid) {
+	var view = getView();
+	var document = view.document;
+	var window = view.window;
+	
+    if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select();
+    } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById(containerid));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+    }
+}
+
+
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 	if(message.popupOpen) {
 		chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 			// execute script on current tab only
 			tabs.forEach(function(tab) {
-				console.log("tab id: " + tab.id)
-				chrome.tabs.executeScript(tab.id, {file: 'ui.js'}, function(){}); 
+				chrome.tabs.executeScript(tab.id, {file: 'page_action.js'}, function(){}); 
 			});
 		});
 	}
 });
 
-//get all links
+//get current tab link
 chrome.runtime.onMessage.addListener(function (message, sender) {
-    if( message && message.action == 'get-links') {
+    if( message && message.action == 'current-url') {
         console.log(message.links);
         chrome.runtime.sendMessage(message);
     }
@@ -23,14 +49,34 @@ chrome.runtime.onMessage.addListener(function (message, sender) {
 //get selected text
 chrome.runtime.onMessage.addListener(function (message, sender) {
     if( message && message.action == 'text-selection') {
-        console.log(message.text);
+        //get popup view and update selected text
+	 	var views = chrome.extension.getViews({
+		 	type: "popup"
+		});
+		for (var i = 0; i < views.length; i++) {
+		    views[i].document.getElementById('selected_text').innerHTML = message.text;
+		}
 
-        	//get popup view and update selected text
- 	var views = chrome.extension.getViews({
-	 	type: "popup"
-	});
-	for (var i = 0; i < views.length; i++) {
-	    views[i].document.getElementById('selected_text').innerHTML = message.text;
-	}
     }
+    if( message && message.action == 'current-page-url') {
+        //get popup view and update selected text
+	 	var views = chrome.extension.getViews({
+		 	type: "popup"
+		});
+		for (var i = 0; i < views.length; i++) {
+		    views[i].document.getElementById('current_tab_url').innerHTML = message.text;
+		}
+    }
+    if( message && message.action == 'current-page-title') {
+        //get popup view and update selected text
+	 	var views = chrome.extension.getViews({
+		 	type: "popup"
+		});
+		for (var i = 0; i < views.length; i++) {
+			var bookmark_title = views[i].document.getElementById('add_bookmark_title');
+		    bookmark_title.value = message.text;
+		    selectText("add_bookmark_title");
+		}
+    }
+
 });
