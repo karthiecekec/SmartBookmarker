@@ -47,42 +47,35 @@ chrome.runtime.onMessage.addListener(function (message, sender) {
 
 //get selected text
 chrome.runtime.onMessage.addListener(function (message, sender) {
+	var views = chrome.extension.getViews({
+		type: "popup"
+	});
+		
 	if ( message && message.action == 'text-selection') {
 		//get popup view and update selected text
-	 	var views = chrome.extension.getViews({
-		 	type: "popup"
-		});
-		for (var i = 0; i < views.length; i++) {
+	 	for (var i = 0; i < views.length; i++) {
 			views[i].document.getElementById('selected_text').innerHTML = message.text;
 		}
 	}
 
 	if ( message && message.action == 'current-page-url') {
 		//get popup view and update current page url
-		var views = chrome.extension.getViews({
-		 	type: "popup"
-		});
 		for (var i = 0; i < views.length; i++) {
 			views[i].document.getElementById('current_tab_url').innerHTML = message.text;
 		}
 	}
 	if ( message && message.action == 'current-page-title') {
 		//get popup view and update current page title
-	 	var views = chrome.extension.getViews({
-		 	type: "popup"
-		});
-		for (var i = 0; i < views.length; i++) {
+	 	for (var i = 0; i < views.length; i++) {
 			var bookmark_title = views[i].document.getElementById('add_bookmark_title');
 			bookmark_title.value = message.text;
 			selectText("add_bookmark_title");
+			views[i].focus(bookmark_title);
 		}
 	}
 	if ( message && message.action == 'fav-icon-url') {
 		//get popup view and update fav icon url
-	 	var views = chrome.extension.getViews({
-		 	type: "popup"
-		});
-		for (var i = 0; i < views.length; i++) {
+	 	for (var i = 0; i < views.length; i++) {
 			var add_bookmark_title = views[i].document.getElementById('add_bookmark_title');
 			add_bookmark_title.style.backgroundImage = "url(" + message.text + ")";
 		}

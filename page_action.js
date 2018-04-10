@@ -5,6 +5,16 @@ function isUrlRelative (urlString) {
 	return true;
 }
 
+function appendBaseUrl (urlString) {
+	var pat = /^www?./i;
+	if (pat.test(urlString)) {
+		return "https://" + urlString;
+	} else {
+		urlString = window.location.origin + "/" + urlString;
+	}
+	return urlString;
+}
+
 var getFavicon = function(){
 	var favicon = undefined;
 	var nodeList = document.getElementsByTagName("link");
@@ -15,9 +25,15 @@ var getFavicon = function(){
 			favicon = nodeList[i].getAttribute("href");
 		}
 	}
+	console.log(favicon);
+
+	//remove slashes at the beginning
+	while(favicon.indexOf("\/") == 0) {
+		favicon = favicon.substr(1, favicon.length);
+	}
 
 	if( isUrlRelative(favicon) ) {
-		favicon = window.location.origin + "/" + favicon;
+		favicon = appendBaseUrl(favicon);
 	}
 	console.log(favicon);
 

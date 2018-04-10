@@ -1,10 +1,11 @@
 function Bookmark () {
 	this.bookmarkId = 0;
-	this.pageContent = "";
-	this.pageTitle = "";
+	this.bookmarkContent = "";
+	this.bookmarkTitle = "";
 	this.pageUrl = "";
 	this.favIconUrl = "";
 	this.contentType = "text";
+	this.timeAdded = "";
 }
 
 Bookmark.prototype.getBookmarkId = function( ) {
@@ -14,18 +15,18 @@ Bookmark.prototype.setBookmarkId = function( id ) {
 	this.bookmarkId = id;
 }
 
-Bookmark.prototype.getPageContent = function( ) {
-	return this.pageContent;
+Bookmark.prototype.getBookmarkContent = function( ) {
+	return this.bookmarkContent;
 }
-Bookmark.prototype.setPageContent = function( content ) {
-	this.pageContent = content;
+Bookmark.prototype.setBookmarkContent = function( content ) {
+	this.bookmarkContent = content;
 }
 
-Bookmark.prototype.getPageTitle = function( ) {
-	return this.pageTitle;
+Bookmark.prototype.getBookmarkTitle = function( ) {
+	return this.bookmarkTitle;
 }
-Bookmark.prototype.setPageTitle = function( title ) {
-	this.pageTitle = title;
+Bookmark.prototype.setBookmarkTitle = function( title ) {
+	this.bookmarkTitle = title;
 }
 
 Bookmark.prototype.getPageUrl = function( ) {
@@ -38,7 +39,7 @@ Bookmark.prototype.setPageUrl = function( url ) {
 Bookmark.prototype.getFavIconUrl = function( ) {
 	return this.favIconUrl;
 }
-Bookmark.prototype.getFavIconUrl = function( url ) {
+Bookmark.prototype.setFavIconUrl = function( url ) {
 	this.favIconUrl = url;
 }
 
@@ -46,5 +47,12 @@ Bookmark.prototype.getContentType = function( ) {
 	return this.contentType;
 }
 Bookmark.prototype.setContentType = function( type ) {
-	this.setContentType = type;
+	this.contentType = type;
+}
+
+Bookmark.prototype.getTimeAdded = function( ) {
+	return this.timeAdded;
+}
+Bookmark.prototype.setTimeAdded = function( time ) {
+	this.timeAdded = time;
 }
