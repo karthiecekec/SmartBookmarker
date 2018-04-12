@@ -4,7 +4,7 @@ function NewBookmarkController( model, view ) {
 
 	var _this = this;
 
-	//register for bookmark view events
+	//register for bookmark add button click
 	this._bookmarkView.addBookmarkBtnClicked.attach( function() {
 		console.log("Add bookmark item to the list !!!");
 
@@ -17,8 +17,8 @@ function NewBookmarkController( model, view ) {
 		bookmark.setContentType( "text" );
 		bookmark.setTimeAdded( "09 Apr 2018 17:42:10" );
 
-		var folder = "General";
+		var category = document.getElementById('bookmark_category').value;
 
-		_this._bookmarkModel.addBookmark( folder, bookmark );
+		_this._bookmarkModel.addBookmark( category, bookmark );
 	});
 }

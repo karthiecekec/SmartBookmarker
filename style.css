@@ -23,6 +23,10 @@ a, a:hover, a:focus {
     transition: all 0.3s;
 }
 
+.wrapper {
+    padding-top: 10px;
+}
+
 .navbar {
     padding: 15px 10px;
     background: #fff;
@@ -55,10 +59,33 @@ a, a:hover, a:focus {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-#content {
+
+#current_selection_title {
+    margin-left: 10px;
+}
+
+#switch_view_btn {
+    margin-right: 10px;
+    float: right;
+}
+
+#clear_all_btn {
+    margin-right: 10px;
+    float: right;
+}
+
+#list_bookmark_view {
     padding: 10px;
     padding-top: 0px;
-    height: 350px;
+    width: 300px;
+    display: block;
+    overflow: auto;
+}
+
+#add_bookmark_view {
+    padding: 10px;
+    padding-top: 0px;
+    height: 400px;
     width: 300px;
 }
 
@@ -74,6 +101,14 @@ a, a:hover, a:focus {
 }
 
 #add_bookmark_btn {
+    /*margin-top: 10px;*/
+}
+
+#list_bookmark_btn {
+    /*margin-top: 10px;*/
+}
+
+#bookmark_category_div{
     margin-top: 10px;
 }
 
@@ -91,4 +126,10 @@ a, a:hover, a:focus {
     text-overflow:ellipsis;
     font-size: 12px;
     color: #000;
+}
+
+.list_group_icon {
+     width:         16px;
+     height:        16px;
+     margin-right:  5px;
 }
